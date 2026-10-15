@@ -61,17 +61,26 @@ const boundaryAliases = {
   'Tøyen':['Nedre Tøyen'], 'Holmlia':['Holmlia Nord','Holmlia Syd'],
   'Ullevål':['Ullevål hageby']
 };
-const boundaries=window.OSLO_BOUNDARIES?.features || [];
+const boundaries=[...(window.OSLO_BOUNDARIES?.features || []),...(window.BAERUM_BOUNDARIES?.features || [])];
+boundaries.forEach(f=>{f.properties.municipality ||= 'Oslo';});
 const assigned=new Set();
 areas.forEach(area=>{
   const names=boundaryAliases[area.name] || [area.name];
   area.features=boundaries.filter(f=>names.includes(f.properties.name));
   area.features.forEach(f=>assigned.add(f.properties.id));
+  area.municipality=area.features[0]?.properties.municipality;
 });
+const unmatched=new Map();
 boundaries.filter(f=>!assigned.has(f.properties.id)).forEach(feature=>{
-  // These extra subdistricts have real borders, but no curated travel estimate or score.
-  areas.push({name:feature.properties.name,features:[feature],min:null,max:null,score:null,
-    description:`Statistical subdistrict in ${feature.properties.district}. Explore and give it your own rating; travel time and starting preference have not been assessed.`});
+  const key=feature.properties.municipality+':'+feature.properties.name;
+  if(!unmatched.has(key)) unmatched.set(key,[]);
+  unmatched.get(key).push(feature);
+});
+unmatched.forEach(features=>{
+  const {name,municipality,district,boundaryType}=features[0].properties;
+  const type=boundaryType==='postal'?'Postal area':'Statistical subdistrict';
+  areas.push({name,municipality,features,min:null,max:null,score:null,
+    description:`${type} in ${municipality==='Bærum'?'Bærum':district}. Explore and give it your own rating; travel time and starting preference have not been assessed.`});
 });
 areas.sort((a,b)=>a.name.localeCompare(b.name,'nb'));
 const storageKey='apthunting-oslo-ratings-v1';
@@ -81,7 +90,7 @@ const $=id=>document.getElementById(id);
 let map,neighborhoodLayer;
 if(window.L){
   map=L.map('map').setView([59.924,10.786],12);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors · Boundaries: <a href="https://github.com/oslokommune/bydelsfakta">Oslo kommune</a>',maxZoom:19}).addTo(map).on('tileerror',()=>{$('map-error').hidden=false;});
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors · Boundaries: <a href="https://github.com/oslokommune/bydelsfakta">Oslo kommune</a> · Posten Norge/Kartverket',maxZoom:19}).addTo(map).on('tileerror',()=>{$('map-error').hidden=false;});
   neighborhoodLayer=L.layerGroup().addTo(map);
 }else {$('map-error').textContent='Map library could not load. The area list and ratings still work.';$('map-error').hidden=false;}
 const colors=['#d34e46','#df8550','#e9b858','#90b66b','#419b69'];
@@ -94,7 +103,9 @@ function popup(area){
   const copy=document.createElement('p');copy.className='popup-copy';
   copy.textContent=area.description+' '+(area.max===null?'Travel time not assessed.':`Approx. ${area.min}–${area.max} min to Oslo S.`);
   const scoreLabel=document.createElement('p');scoreLabel.className='popup-copy';scoreLabel.textContent=`${$('mode').value==='personal'?'Your rating':'Suggested fit'}: ${score(area) ? score(area)+'/5':'unscored'}.`;
-  const boundaryLabel=document.createElement('p');boundaryLabel.className='popup-copy';boundaryLabel.textContent=`Borders: ${area.features.map(f=>f.properties.name).join(' + ')} (statistical subdistrict).`;
+  const boundaryLabel=document.createElement('p');boundaryLabel.className='popup-copy';boundaryLabel.textContent=area.features[0].properties.boundaryType==='postal'
+    ? `Bærum postal area · postcode${area.features.length>1?'s':''} ${area.features.map(f=>f.properties.postalCode).join(', ')}. These are postal borders, not official neighborhood boundaries.`
+    : `Borders: ${area.features.map(f=>f.properties.name).join(' + ')} (statistical subdistrict).`;
   root.append(title,copy,boundaryLabel,scoreLabel,ratingControls(area));return root;
 }
 function ratingControls(area){
@@ -113,7 +124,7 @@ function render(){
   const opacity=Number($('opacity').value)/100,showBoundaries=$('show-boundaries').checked;
   $('time-label').textContent=`${limit} min`;$('opacity-label').textContent=`${Math.round(opacity*100)}%`;
   $('opacity').disabled=!showBoundaries;
-  const visible=areas.filter(a=>a.features.length && (a.max===null ? $('unknown-times').checked : a.max<=limit)&&a.name.toLocaleLowerCase().includes(query));
+  const visible=areas.filter(a=>a.features.length && ($('region').value==='all'||a.municipality===$('region').value) && (a.max===null ? $('unknown-times').checked : a.max<=limit)&&a.name.toLocaleLowerCase().includes(query));
   $('count').textContent=`${visible.length} areas`;
   $('areas').replaceChildren(); neighborhoodLayer?.clearLayers();
   if(map){if(showBoundaries)neighborhoodLayer.addTo(map);else map.removeLayer(neighborhoodLayer);}
@@ -125,7 +136,7 @@ function render(){
       if(area.features.length){
         marker=L.geoJSON({type:'FeatureCollection',features:area.features},{style:{color:'#3d5145',weight:1.3,opacity:.85,fillColor:color,fillOpacity:opacity}}).addTo(neighborhoodLayer);
         marker.eachLayer(layer=>{
-          layer.bindTooltip(`${layer.feature.properties.name} · ${value ? value+'/5':'unscored'}`,{sticky:true});
+          layer.bindTooltip(`${layer.feature.properties.name}${layer.feature.properties.boundaryType==='postal'?' · postal area '+layer.feature.properties.postalCode:''} · ${value ? value+'/5':'unscored'}`,{sticky:true});
           layer.on('mouseover',()=>layer.setStyle({weight:3,fillOpacity:Math.min(opacity+.18,.9)}));
           layer.on('mouseout',()=>layer.setStyle({weight:1.3,fillOpacity:opacity}));
         });
@@ -147,6 +158,13 @@ function toggleLayerPanel(open){layerPanel.hidden=!open;layerButton.setAttribute
 layerButton.addEventListener('click',()=>toggleLayerPanel(layerPanel.hidden));
 document.addEventListener('click',event=>{if(!event.target.closest('.map-layers'))toggleLayerPanel(false);});
 document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!layerPanel.hidden){toggleLayerPanel(false);layerButton.focus();}});
+$('region').addEventListener('change',()=>{
+  render();
+  if(map&&neighborhoodLayer.getLayers().length){
+    const bounds=L.latLngBounds([]);neighborhoodLayer.eachLayer(layer=>bounds.extend(layer.getBounds()));
+    if(bounds.isValid())map.fitBounds(bounds,{padding:[24,24],maxZoom:12,animate:false});
+  }
+});
 ['minutes','search','mode','show-boundaries','opacity','unknown-times'].forEach(id=>$(id).addEventListener('input',render));
 $('reset').onclick=()=>{if(confirm('Clear all your neighborhood ratings?')){ratings={};persist();render();}};
 render();

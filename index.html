@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>apthunting · Oslo neighborhood explorer</title>
   <link rel="stylesheet" href="vendor/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-  <link rel="stylesheet" href="style.css?v=layers-3">
+  <link rel="stylesheet" href="style.css?v=baerum-4">
   <script defer src="vendor/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <script defer src="data/neighborhoods.js?v=layers-3"></script>
-  <script defer src="app.js?v=layers-3"></script>
+  <script defer src="data/neighborhoods.js?v=baerum-4"></script>
+  <script defer src="data/baerum.js?v=baerum-4"></script>
+  <script defer src="app.js?v=baerum-4"></script>
 </head>
 <body>
   <aside>
@@ -16,7 +17,8 @@
     <section class="controls" aria-label="Map filters">
       <label for="minutes">Approx. transit to Oslo S <strong id="time-label">60 min</strong></label>
       <input id="minutes" type="range" min="15" max="60" step="5" value="60">
-      <label for="search">Find an area</label><input id="search" type="search" placeholder="Try Sagene or Majorstuen…">
+      <label for="region">Map area</label><select id="region"><option value="all">Oslo + Bærum</option><option value="Oslo">Oslo</option><option value="Bærum">Bærum · Sandvika &amp; surroundings</option></select>
+      <label for="search">Find an area</label><input id="search" type="search" placeholder="Try Sandvika, Høvik or Sagene…">
       <label for="mode">Color the map by</label><select id="mode"><option value="starter">Suggested fit: green + transit</option><option value="personal">Your own ratings</option></select>
       <label class="check"><input id="unknown-times" type="checkbox" checked> Include areas with unknown travel times</label>
       <div class="legend"><span>Less my style</span><span>More my style</span></div><div class="gradient"></div>
@@ -24,7 +26,7 @@
     </section>
     <div class="list-heading"><h2>Explore areas</h2><span id="count"></span></div>
     <div id="areas"></div>
-    <footer><button id="reset">Reset my ratings</button><p>Ratings stay in this browser. Shapes show Oslo statistical subdistricts (delbydeler), which can differ from everyday neighborhood names. Only areas with available borders are shown; nearby towns outside this dataset are not included. <a href="data/SOURCES.md">Boundary source: Oslo kommune / Bydelsfakta (MIT)</a>.</p></footer>
+    <footer><button id="reset">Reset my ratings</button><p>Ratings stay in this browser. Shapes show Oslo statistical subdistricts and Bærum postal areas, which can differ from everyday neighborhood names. Only areas with available borders are shown. <a href="data/SOURCES.md">Boundary sources &amp; licenses</a>.</p></footer>
   </aside>
   <main><div id="map" aria-label="Interactive map of Oslo neighborhoods"></div>
     <div class="map-layers" aria-label="Map layer controls">
