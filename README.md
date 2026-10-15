@@ -14,9 +14,10 @@ Open the served `index.html` in a browser. No dependency installation or build i
 
 ## How to use
 
-- Filter areas by the upper end of their approximate public transport journey range to Oslo S, up to 60 minutes. These are manually curated orientation estimates, not live schedules, door-to-door guarantees, or an exhaustive one-hour isochrone.
-- Click an area name or map marker to explore. Markers represent approximate centers, not administrative boundaries. Nearby towns are included.
-- Start with suggested scores favoring greenery, transit and residential atmosphere. These subjective suggestions do not measure safety, actual rents, or either partner’s workplace commute.
+- Areas without curated travel estimates start unscored (gray) and are labeled “Time unknown”. Uncheck “Include areas with unknown travel times” to exclude them; they are not verified to be within an hour.
+- Filter assessed areas by the upper end of their approximate public transport journey range to Oslo S, up to 60 minutes. These are manually curated orientation estimates, not live schedules, door-to-door guarantees, or an exhaustive one-hour isochrone.
+- Neighborhoods are filled polygons with visible borders, from Oslo kommune’s Bydelsfakta statistical subdistrict dataset (96 delbydeler). Click a polygon to rate it directly. Toggle the colored layer or adjust its opacity to see the base map. See [boundary provenance and license](data/SOURCES.md). Informal neighborhood names may cover different areas; tooltips show actual boundary names. Areas without boundary data retain small dashed point markers, including nearby towns.
+- Previously unreviewed subdistricts start gray. For assessed areas, start with suggested scores favoring greenery, transit and residential atmosphere. These subjective suggestions do not measure safety, actual rents, or either partner’s workplace commute.
 - Give each area your own 1–5 rating; this switches the map to your ratings. Unrated areas turn gray. Ratings save in this browser’s local storage; they do not sync between devices. Reset asks before clearing them.
 - Check exact address-to-office journeys in Entur or Ruter before shortlisting. UiO campus and Sikt office addresses are still needed. Rent and apartment area comparisons are not implemented yet.
 
