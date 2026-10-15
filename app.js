@@ -78,12 +78,11 @@ const storageKey='apthunting-oslo-ratings-v1';
 let ratings={};
 try { const saved=JSON.parse(localStorage.getItem(storageKey)||'{}'); if(saved && typeof saved==='object' && !Array.isArray(saved)) ratings=Object.fromEntries(Object.entries(saved).filter(([,v])=>Number.isInteger(v)&&v>=1&&v<=5)); } catch {}
 const $=id=>document.getElementById(id);
-let map,markers;
+let map,neighborhoodLayer;
 if(window.L){
   map=L.map('map').setView([59.924,10.786],12);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors · Boundaries: <a href="https://github.com/oslokommune/bydelsfakta">Oslo kommune</a>',maxZoom:19}).addTo(map).on('tileerror',()=>{$('map-error').hidden=false;});
-  markers=L.layerGroup().addTo(map);
-  L.marker([59.9109,10.7528]).addTo(map).bindPopup('<b>Oslo S</b><br>Reference point for approximate travel ranges.');
+  neighborhoodLayer=L.layerGroup().addTo(map);
 }else {$('map-error').textContent='Map library could not load. The area list and ratings still work.';$('map-error').hidden=false;}
 const colors=['#d34e46','#df8550','#e9b858','#90b66b','#419b69'];
 function score(area){return $('mode').value==='personal' ? ratings[area.name] : area.score;}
@@ -95,7 +94,7 @@ function popup(area){
   const copy=document.createElement('p');copy.className='popup-copy';
   copy.textContent=area.description+' '+(area.max===null?'Travel time not assessed.':`Approx. ${area.min}–${area.max} min to Oslo S.`);
   const scoreLabel=document.createElement('p');scoreLabel.className='popup-copy';scoreLabel.textContent=`${$('mode').value==='personal'?'Your rating':'Suggested fit'}: ${score(area) ? score(area)+'/5':'unscored'}.`;
-  const boundaryLabel=document.createElement('p');boundaryLabel.className='popup-copy';boundaryLabel.textContent=area.features.length?`Borders: ${area.features.map(f=>f.properties.name).join(' + ')} (statistical subdistrict).`:'Border unavailable: this dot is an approximate location.';
+  const boundaryLabel=document.createElement('p');boundaryLabel.className='popup-copy';boundaryLabel.textContent=`Borders: ${area.features.map(f=>f.properties.name).join(' + ')} (statistical subdistrict).`;
   root.append(title,copy,boundaryLabel,scoreLabel,ratingControls(area));return root;
 }
 function ratingControls(area){
@@ -114,36 +113,40 @@ function render(){
   const opacity=Number($('opacity').value)/100,showBoundaries=$('show-boundaries').checked;
   $('time-label').textContent=`${limit} min`;$('opacity-label').textContent=`${Math.round(opacity*100)}%`;
   $('opacity').disabled=!showBoundaries;
-  const visible=areas.filter(a=>(a.max===null ? $('unknown-times').checked : a.max<=limit)&&a.name.toLocaleLowerCase().includes(query));
+  const visible=areas.filter(a=>a.features.length && (a.max===null ? $('unknown-times').checked : a.max<=limit)&&a.name.toLocaleLowerCase().includes(query));
   $('count').textContent=`${visible.length} areas`;
-  $('areas').replaceChildren(); markers?.clearLayers();
+  $('areas').replaceChildren(); neighborhoodLayer?.clearLayers();
+  if(map){if(showBoundaries)neighborhoodLayer.addTo(map);else map.removeLayer(neighborhoodLayer);}
   if(!visible.length) $('areas').textContent='No areas match. Try a longer journey or a different search.';
   visible.forEach(area=>{
     const value=score(area),color=colors[value-1]||'#87928e';
     let marker;
     if(map){
       if(area.features.length){
-        marker=L.geoJSON({type:'FeatureCollection',features:area.features},{style:{color:showBoundaries?'#3d5145':color,weight:showBoundaries?1.3:1,opacity:showBoundaries ? .85 : .4,fillColor:color,fillOpacity:showBoundaries?opacity:0}}).addTo(markers);
+        marker=L.geoJSON({type:'FeatureCollection',features:area.features},{style:{color:'#3d5145',weight:1.3,opacity:.85,fillColor:color,fillOpacity:opacity}}).addTo(neighborhoodLayer);
         marker.eachLayer(layer=>{
           layer.bindTooltip(`${layer.feature.properties.name} · ${value ? value+'/5':'unscored'}`,{sticky:true});
-          layer.on('mouseover',()=>layer.setStyle({weight:3,fillOpacity:showBoundaries?Math.min(opacity+.18,.9):.12}));
-          layer.on('mouseout',()=>layer.setStyle({weight:showBoundaries?1.3:1,fillOpacity:showBoundaries?opacity:0}));
+          layer.on('mouseover',()=>layer.setStyle({weight:3,fillOpacity:Math.min(opacity+.18,.9)}));
+          layer.on('mouseout',()=>layer.setStyle({weight:1.3,fillOpacity:opacity}));
         });
         marker.bindPopup(()=>popup(area));
-      } else {
-        marker=L.circleMarker([area.lat,area.lng],{radius:7,color:'#34483e',dashArray:'3 3',weight:1.5,fillColor:color,fillOpacity:.85}).addTo(markers).bindTooltip(`${area.name} · border unavailable`).bindPopup(()=>popup(area));
       }
     }
     const card=document.createElement('article');card.className='area';
     const top=document.createElement('div');top.className='area-top';
     const name=document.createElement('button');name.className='area-name';name.textContent=area.name;
-    name.onclick=()=>{if(map){if(area.features.length){map.fitBounds(marker.getBounds(),{padding:[30,30],maxZoom:14,animate:false});marker.openPopup(marker.getBounds().getCenter());}else{map.setView([area.lat,area.lng],13);marker.openPopup();}}};
+    name.onclick=()=>{if(map){if(!$('show-boundaries').checked){$('show-boundaries').checked=true;neighborhoodLayer.addTo(map);$('opacity').disabled=false;}map.fitBounds(marker.getBounds(),{padding:[30,30],maxZoom:14,animate:false});marker.openPopup(marker.getBounds().getCenter());}};
     const badge=document.createElement('span');badge.className='badge';badge.textContent=area.max===null?'Time unknown':`${area.min}–${area.max} min`;
     top.append(name,badge);
     const copy=document.createElement('p');copy.textContent=area.description;
     card.append(top,copy,ratingControls(area));$('areas').append(card);
   });
 }
+const layerButton=$('layers-toggle'),layerPanel=$('layers-panel');
+function toggleLayerPanel(open){layerPanel.hidden=!open;layerButton.setAttribute('aria-expanded',String(open));}
+layerButton.addEventListener('click',()=>toggleLayerPanel(layerPanel.hidden));
+document.addEventListener('click',event=>{if(!event.target.closest('.map-layers'))toggleLayerPanel(false);});
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!layerPanel.hidden){toggleLayerPanel(false);layerButton.focus();}});
 ['minutes','search','mode','show-boundaries','opacity','unknown-times'].forEach(id=>$(id).addEventListener('input',render));
 $('reset').onclick=()=>{if(confirm('Clear all your neighborhood ratings?')){ratings={};persist();render();}};
 render();
