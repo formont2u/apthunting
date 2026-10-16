@@ -43,7 +43,7 @@ const areas = [
   ['Furuset',59.942,10.898,25,40,4,'Metro and local center, with green residential surroundings.'],
   ['Stovner',59.963,10.924,30,45,4,'Metro, shopping and access to surrounding green areas.'],
   ['Grorud',59.961,10.882,25,40,4,'Metro and green surroundings; rail station is in a different part of the area.'],
-  ['Lillestrøm',59.956,11.050,10,25,4,'Separate town with frequent trains to Oslo; workplace trips need another check.'],
+  ['Lillestrøm',59.956,11.050,10,30,4,'A town center with shops, cafés and trains to Oslo S: roughly 10–12 minutes on fast services or 25–30 minutes on local services, station to station. Walking time and onward journeys to both offices must be checked.'],
   ['Strømmen',59.950,11.003,25,40,4,'Local rail, shopping and residential streets outside Oslo municipality.'],
   ['Lørenskog station area',59.945,10.944,20,35,4,'Rail access and suburban housing; other parts of Lørenskog have different journeys.'],
   ['Lysaker',59.913,10.637,10,20,4,'Major rail and bus hub; housing and road noise vary by pocket.'],
@@ -61,7 +61,7 @@ const boundaryAliases = {
   'Tøyen':['Nedre Tøyen'], 'Holmlia':['Holmlia Nord','Holmlia Syd'],
   'Ullevål':['Ullevål hageby']
 };
-const boundaries=[...(window.OSLO_BOUNDARIES?.features || []),...(window.BAERUM_BOUNDARIES?.features || [])];
+const boundaries=[...(window.OSLO_BOUNDARIES?.features || []),...(window.BAERUM_BOUNDARIES?.features || []),...(window.LILLESTROM_BOUNDARIES?.features || [])];
 boundaries.forEach(f=>{f.properties.municipality ||= 'Oslo';});
 const assigned=new Set();
 areas.forEach(area=>{
@@ -133,7 +133,7 @@ function popup(area){
   copy.textContent=area.description+' '+(area.max===null?'Travel time not assessed.':`Approx. ${area.min}–${area.max} min to Oslo S.`);
   const scoreLabel=document.createElement('p');scoreLabel.className='popup-copy';scoreLabel.textContent=`${$('mode').value==='fit'?'Provisional fit (not verified rent/commute)':$('mode').value==='personal'?'Your rating':'Original suggestion'}: ${scoreText(area)}.`;
   const boundaryLabel=document.createElement('p');boundaryLabel.className='popup-copy';boundaryLabel.textContent=area.features[0].properties.boundaryType==='postal'
-    ? `Bærum postal area · postcode${area.features.length>1?'s':''} ${area.features.map(f=>f.properties.postalCode).join(', ')}. These are postal borders, not official neighborhood boundaries.`
+    ? `${area.municipality} postal area · postcode${area.features.length>1?'s':''} ${area.features.map(f=>f.properties.postalCode).join(', ')}. These are postal borders, not official neighborhood boundaries.`
     : `Borders: ${area.features.map(f=>f.properties.name).join(' + ')} (statistical subdistrict).`;
   root.append(title,copy,boundaryLabel,scoreLabel);const details=fitDetails(area);if(details)root.append(details);root.append(ratingControls(area));return root;
 }

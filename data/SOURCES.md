@@ -13,3 +13,9 @@ Curated area names are explicitly matched to corresponding subdistricts in app.j
 Coordinates are unchanged; metadata is reduced and postal polygons with the same poststed are displayed as one rateable area. Internal postcode borders remain visible. These are postal delivery areas, **not official neighborhood or statistical subdistrict boundaries**, and may include large green or outlying areas. They are a versioned snapshot, not a claim of current postal coverage. Postal locality names do not delimit every informal place name in the screenshot.
 
 Coverage: Sandvika, Bekkestua, Blommenholm, Bærums Verk, Eiksmarka, Fornebu, Gjettum, Haslum, Hosle, Høvik, Høvikodden, Jar, Kolsås, Lommedalen, Lysaker, Rud, Rykkinn, Skui, Slependen, Snarøya, Stabekk, Vøyenenga and Østerås. Existing curated estimates/scores are reused for Sandvika, Bekkestua and Lysaker. Other new areas have unknown travel times and no suggested score; they are not verified to fall within a one-hour commute. Personal ratings use the displayed postal locality name and apply across its postal polygons.
+
+## Lillestrøm postal areas
+
+The same carestad/norwegian-geodata snapshot and Posten Norge/Kartverket source described above supplies the postal localities 2000, 2003 and 2004 LILLESTRØM (municipality 3205). These three polygons are displayed and rated together as **Lillestrøm**; they cover the named postal locality, not the entire municipality or a one-hour travel zone. Original extraction dates: 28 January 2024. Coordinates unchanged; metadata reduced. The source license is retained in LICENSE-postal.
+
+The existing Lillestrøm station-to-Oslo S estimate is broadened to 10–30 minutes to distinguish fast and local services. It excludes walking to/from stations and is not a verified route to either workplace. The provisional preference score uses the same qualitative factors as the other assessed areas, not rental or route data.

@@ -40,6 +40,7 @@ window.NEIGHBORHOOD_FIT = [
   ['Løren',[3,4,5,3,3],'Local shops and newer apartment stock, with metro access.','A less established café atmosphere; verify connections and rental costs.'],
   ['Bekkestua',[3,5,5,2,4],'A walkable local center with shops and a calmer residential setting.','Quieter social life; your preferred 30-minute office commute is not established.'],
   ['Stabekk',[3,5,4,2,4],'A smaller local center and green residential surroundings.','Fewer social venues; rail time to the center is not the office journey.'],
+  ['Lillestrøm',[2,4,5,4,4],'A walkable town center with shopping, cafés and fast rail access to Oslo S; worth comparing against the inner-city options.','Both office journeys require onward travel from Oslo S. Prefer listings near the station and verify the full route; rent, 45+ m², parking and unfurnished availability remain listing checks.'],
   ['Sandvika',[2,4,5,3,4],'A substantial shopping center, local amenities and waterfront access.','Farther from both work areas; verify the interchange and final walking legs before shortlisting.'],
   ['Lysaker',[3,3,4,2,4],'Useful transport connections and access to coastal/river walks.','Office-heavy pockets and main roads can weaken the neighborhood/social feel.'],
   ['Fornebu',[2,5,4,2,5],'Waterfront parks and residential surroundings, with local shopping.','Fewer social streets and office routes need checking; do not assume a metro connection.'],
