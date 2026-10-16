@@ -5,26 +5,34 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>apthunting · Oslo neighborhood explorer</title>
   <link rel="stylesheet" href="vendor/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-  <link rel="stylesheet" href="style.css?v=baerum-4">
+  <link rel="stylesheet" href="style.css?v=fit-5">
   <script defer src="vendor/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <script defer src="data/neighborhoods.js?v=baerum-4"></script>
-  <script defer src="data/baerum.js?v=baerum-4"></script>
-  <script defer src="app.js?v=baerum-4"></script>
+  <script defer src="data/neighborhoods.js?v=fit-5"></script>
+  <script defer src="data/baerum.js?v=fit-5"></script>
+  <script defer src="preferences.js?v=fit-5"></script>
+  <script defer src="app.js?v=fit-5"></script>
 </head>
 <body>
   <aside>
     <header><span class="eyebrow">APTHUNTING / OSLO</span><h1>Find your kind<br>of neighborhood.</h1><p>A place for two. One bedroom or more.<br>Moving 1 December · UiO + Sikt</p></header>
+    <section class="profile" aria-label="Your rental priorities">
+      <span class="eyebrow">YOUR SEARCH</span>
+      <p><strong>NOK 18k incl. heating &amp; water · 23k ceiling</strong><br>45+ m² · 1+ bedroom · two people<br>Unfurnished preferred · parking preferred<br>Work commute: 30 min preferred · 60 min maximum</p>
+      <p class="small">Shops → social atmosphere → parks. Prefer a residential base with more space, then central living, then farther out. Public transport, walking or cycling preferred; car available.</p>
+      <details><summary>How your first ranking works</summary><p class="small" id="ranking-method"></p><p class="small">Weights are a starting interpretation of your answers. Factors are qualitative judgments, not measured amenity counts or verified routes. Space, unfurnished availability, rent including heating/water, parking charges, electricity and actual commute times must be checked for each listing. Unassessed areas stay gray; they are not automatically worse.</p></details>
+    </section>
     <section class="controls" aria-label="Map filters">
-      <label for="minutes">Approx. transit to Oslo S <strong id="time-label">60 min</strong></label>
+      <label for="minutes">Approx. transit to Oslo S (not work) <strong id="time-label">60 min</strong></label>
       <input id="minutes" type="range" min="15" max="60" step="5" value="60">
       <label for="region">Map area</label><select id="region"><option value="all">Oslo + Bærum</option><option value="Oslo">Oslo</option><option value="Bærum">Bærum · Sandvika &amp; surroundings</option></select>
       <label for="search">Find an area</label><input id="search" type="search" placeholder="Try Sandvika, Høvik or Sagene…">
-      <label for="mode">Color the map by</label><select id="mode"><option value="starter">Suggested fit: green + transit</option><option value="personal">Your own ratings</option></select>
+      <label for="mode">Color the map by</label><select id="mode"><option value="fit">Your provisional ranking</option><option value="starter">Original general suggestions</option><option value="personal">Your own ratings</option></select>
+      <label class="check"><input id="ranked-only" type="checkbox"> Show only assessed matches</label>
       <label class="check"><input id="unknown-times" type="checkbox" checked> Include areas with unknown travel times</label>
       <div class="legend"><span>Less my style</span><span>More my style</span></div><div class="gradient"></div>
-      <p class="small">Suggestions favor greenery, transit, and a residential feel. They are subjective—not measures of safety, rent, or neighborhood quality. Gray = no score in the selected mode. Click a neighborhood to rate it.</p>
+      <p class="small">Your provisional ranking reflects the priorities above. Gray = unassessed in this mode. Budget and the 60-minute office commute are not verified by this map. Click an area to see its reasons and tradeoffs.</p>
     </section>
-    <div class="list-heading"><h2>Explore areas</h2><span id="count"></span></div>
+    <div class="list-heading"><h2>Your neighborhood ranking</h2><span id="count"></span></div>
     <div id="areas"></div>
     <footer><button id="reset">Reset my ratings</button><p>Ratings stay in this browser. Shapes show Oslo statistical subdistricts and Bærum postal areas, which can differ from everyday neighborhood names. Only areas with available borders are shown. <a href="data/SOURCES.md">Boundary sources &amp; licenses</a>.</p></footer>
   </aside>
@@ -36,10 +44,11 @@
       <section id="layers-panel" hidden aria-label="Layers">
         <h2>Map layers</h2>
         <label class="check"><input id="show-boundaries" type="checkbox" checked> Neighborhood colors &amp; borders</label>
+        <label class="check"><input id="show-work" type="checkbox" checked> Work locations (approximate)</label>
         <label for="opacity">Fill opacity <strong id="opacity-label">60%</strong></label><input id="opacity" type="range" min="10" max="80" step="5" value="60">
         <div class="gradient"></div><div class="legend"><span>Less my style</span><span>More my style</span></div>
         <p class="small">Gray = unscored. Click a neighborhood to rate it. Switch colors off to see only the base map.</p>
       </section>
-    </div><div class="map-note"><b>Your neighborhood layer · red → green</b> Use the <b class="inline">Layers</b> button at the top right to switch the overlay on or off. Gray = unscored. Unknown travel times are included only when checked. Other times are rough estimates to Oslo S, not live routing; verify in <a href="https://entur.no/" target="_blank" rel="noopener">Entur</a>.</div><div id="map-error" role="status" hidden>Background map could not load. Neighborhood shapes and ratings still work. Check your connection.</div></main>
+    </div><div class="map-note"><b>Your neighborhood layer · red → green</b> Use the <b class="inline">Layers</b> button at the top right to switch the overlay on or off. Briefcase icons = approximate work areas. Gray = unassessed. Unknown travel times are included only when checked. Other times are rough estimates to Oslo S, not live routing; verify in <a href="https://entur.no/" target="_blank" rel="noopener">Entur</a>.</div><div id="map-error" role="status" hidden>Background map could not load. Neighborhood shapes and ratings still work. Check your connection.</div></main>
 </body>
 </html>
