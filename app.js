@@ -183,7 +183,7 @@ function render(){
     card.append(top);if($('mode').value==='fit'&&fitByName.has(area.name)){const fitBadge=document.createElement('p');fitBadge.className='fit-score';fitBadge.textContent='Provisional fit '+scoreText(area);card.append(fitBadge,fitDetails(area));}else card.append(copy);card.append(ratingControls(area));$('areas').append(card);
   });
 }
-const savedListings=window.SAVED_LISTINGS || [];
+const savedListings=[...(window.SAVED_LISTINGS || [])].sort((a,b)=>b.score-a.score);
 const listingMarkers=new Map();
 function listingContent(listing,expanded=false){
   const root=document.createElement('article');root.className='listing-card';root.lang='fr';
