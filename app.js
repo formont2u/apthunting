@@ -93,7 +93,7 @@ const storageKey='apthunting-oslo-ratings-v1';
 let ratings={};
 try { const saved=JSON.parse(localStorage.getItem(storageKey)||'{}'); if(saved && typeof saved==='object' && !Array.isArray(saved)) ratings=Object.fromEntries(Object.entries(saved).filter(([,v])=>Number.isInteger(v)&&v>=1&&v<=5)); } catch {}
 const $=id=>document.getElementById(id);
-let map,neighborhoodLayer,workLayer;
+let map,neighborhoodLayer,workLayer,listingLayer;
 if(window.L){
   map=L.map('map').setView([59.924,10.786],12);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors · Boundaries: <a href="https://github.com/oslokommune/bydelsfakta">Oslo kommune</a> · Posten Norge/Kartverket',maxZoom:19}).addTo(map).on('tileerror',()=>{$('map-error').hidden=false;});
@@ -183,6 +183,41 @@ function render(){
     card.append(top);if($('mode').value==='fit'&&fitByName.has(area.name)){const fitBadge=document.createElement('p');fitBadge.className='fit-score';fitBadge.textContent='Provisional fit '+scoreText(area);card.append(fitBadge,fitDetails(area));}else card.append(copy);card.append(ratingControls(area));$('areas').append(card);
   });
 }
+const savedListings=window.SAVED_LISTINGS || [];
+const listingMarkers=new Map();
+function listingContent(listing,expanded=false){
+  const root=document.createElement('article');root.className='listing-card';root.lang='fr';
+  const title=document.createElement('h3');title.textContent=listing.title;
+  const score=document.createElement('p');score.className='listing-score';score.textContent=`${listing.score}/10 · note provisoire`;
+  const facts=document.createElement('p');facts.textContent=`${listing.rent.toLocaleString('fr-FR')} NOK/mois · ${listing.area} m² annoncés · 1 chambre existante · non meublé`;
+  const verdict=document.createElement('p');verdict.textContent=listing.verdict;
+  const location=document.createElement('p');location.className='location-warning';location.textContent=listing.locationNote;
+  root.append(title,score,facts,verdict,location);
+  const details=document.createElement('details');details.open=expanded;
+  const summary=document.createElement('summary');summary.textContent='Analyse, frais et points à vérifier';details.append(summary);
+  for(const [heading,items] of [['Points forts',listing.strengths],['À confirmer',listing.checks]]){
+    const h=document.createElement('h4');h.textContent=heading;const ul=document.createElement('ul');
+    items.forEach(text=>{const li=document.createElement('li');li.textContent=text;ul.append(li);});details.append(h,ul);
+  }
+  for(const text of [listing.costs,listing.methodology,listing.source]){const paragraph=document.createElement('p');paragraph.textContent=text;details.append(paragraph);}
+  const link=document.createElement('a');link.href=listing.url;link.target='_blank';link.rel='noopener';link.textContent='Voir sur FINN · '+listing.id;
+  root.append(details,link);return root;
+}
+if(map){
+  listingLayer=L.layerGroup().addTo(map);
+  savedListings.forEach(listing=>{
+    const icon=L.divIcon({className:'listing-icon',html:'<svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m2 11 10-8 10 8M5 9v12h14V9M10 21v-7h4v7"/></svg><span>≈</span>',iconSize:[42,42],iconAnchor:[21,21],popupAnchor:[0,-24]});
+    const marker=L.marker([listing.lat,listing.lng],{title:listing.title+' · position approximative',icon}).addTo(listingLayer).bindTooltip(listing.title+' · '+listing.score+'/10 · repère approximatif').bindPopup(()=>listingContent(listing),{maxWidth:350});
+    listingMarkers.set(listing.id,marker);
+  });
+}
+savedListings.forEach(listing=>{
+  const card=listingContent(listing);
+  const button=document.createElement('button');button.className='show-listing';button.textContent='Voir le repère sur la carte';button.disabled=!map;
+  button.onclick=()=>{if(map){$('show-listings').checked=true;listingLayer.addTo(map);map.setView([listing.lat,listing.lng],15,{animate:false});listingMarkers.get(listing.id).openPopup();}};
+  card.append(button);$('saved-listings').append(card);
+});
+$('show-listings').addEventListener('input',()=>{if(map){if($('show-listings').checked)listingLayer.addTo(map);else map.removeLayer(listingLayer);}});
 $('ranking-method').textContent=profile.priorities.map(p=>p.label+' '+p.weight+'%').join(' · ')+'. Both work areas count equally; proximity is a geographic judgment, not a transit-time calculation. Budget and floor area are listing requirements, not assumed neighborhood prices.';
 $('show-work').addEventListener('input',()=>{if(map){if($('show-work').checked)workLayer.addTo(map);else map.removeLayer(workLayer);}});
 const layerButton=$('layers-toggle'),layerPanel=$('layers-panel');
