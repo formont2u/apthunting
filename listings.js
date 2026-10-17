@@ -158,4 +158,31 @@ window.SAVED_LISTINGS = [{
   ],
   costs:'Advertised total rent NOK 18,500 already includes the NOK 589 heating/hot-water advance, water/sewer, basic internet/TV and garage. Electricity requires your own subscription; clarify heating settlement, EV charging and any service upgrades. Security starts at three months, implying at least NOK 55,500; confirm the required amount. An optional If insurance alternative at 2.6% costs NOK 481/month, within its NOK 300–700 bounds, making NOK 18,981 before electricity and adjustments. Do not automatically add both the insurance and deposit; insurer reimbursement claims against the tenant may still apply.',
   methodology:'Provisional 8.5/10 for the advertised standard lease package: reported C grade, garage, included basic services, lift/balcony and matching date are unusually close to your needs among the supplied listings. Partial furnishing, unverified commutes, annual utility adjustments and binding lease terms keep it conditional. First overall in the current saved-listing scores, not a claim of verified availability, market value or lower lifetime cost.'
+}, {
+  id:'227875411',title:'Grefsen / Sinsen–Storo · Hans Nordahls gate 36',address:'Hans Nordahls gate 36, 0481 Oslo',
+  url:'https://www.finn.no/realestate/lettings/ad.html?finnkode=227875411',
+  rent:17900,deposit:53700,area:47,bedrooms:1,score:7.5,furnishing:'furnished in the description; amenities say partly furnished',energyGrade:null,
+  source:'User-provided listing text; not rechecked online. No energy grade is supplied. Photos and certificate not reviewed.',
+  lat:59.9407,lng:10.7804,
+  locationNote:'Approximate reference near Grefsen station, between Sinsen and Storo, not a verified geocode of Hans Nordahls gate 36. Confirm the entrance and exact routes.',
+  verdict:'Provisional 7.5/10: promising rent with advertised included heating/hot water/internet, a balcony and flexible move-in. Substantial furniture conflicts with your preference, parking is conditional, and the energy grade remains unknown. Ask about furniture removal before prioritizing a viewing.',
+  strengths:[
+    'NOK 17,900 base rent with heating, hot water, cable TV and internet advertised as included. Confirm whether these are fixed inclusions or advances subject to settlement.',
+    'Advertised 47 m² and one bedroom meet your minimums, though floor area is only 2 m² above your threshold.',
+    'Third floor with lift, large balcony described, basement storage and a washing machine listed.',
+    'Kitchen description lists integrated fridge, freezer, oven, dishwasher and hob.',
+    'The area between Sinsen and Storo offers transport hubs, shopping and access toward Torshovdalen and the river; confirm the exact walking routes.',
+    'Displayed start 20 November 2026, but the description expressly says move-in is flexible. Ask for your ideal 1 December start rather than assuming an overlap is required.'
+  ],
+  checks:[
+    'The title and detailed inventory say furnished, while amenities say partly furnished. Sofa, bed, dining table/chairs, coffee table and other furniture are explicitly listed. Clarify what stays and whether removal is possible without extra cost.',
+    'No energy letter is included in the supplied text. A 2019 construction date does not establish grade A, B or C: request the certificate.',
+    'Garage rental is only possible if a space is available; no price is given. The NOK 1,994 garage advert under similar listings is a different advert, not this property’s parking charge.',
+    'Private electricity, cold water and possible utility reconciliation are not clearly specified. Obtain an itemized monthly-cost breakdown.',
+    'Exact office journeys are unverified. Being between metro stations does not establish a direct route or a door-to-door journey under 30 minutes.',
+    'Displayed term: 20 November 2026–21 November 2029. Confirm revised dates, notice, minimum term and deposit-account arrangements; flexibility of move-in does not imply flexible termination.',
+    'The generic FINN question about constant neighbor noise is a survey prompt, not a specific noise warning. Road/rail noise, sound insulation, light and condition have not been assessed from photos.'
+  ],
+  costs:'Advertised rent NOK 17,900 and deposit NOK 53,700. Heating, hot water, cable TV and internet are stated as included; confirm the terms and any settlement. Electricity/cold-water treatment and garage cost remain unconfirmed, so the all-in budget is not established. A garage is subject to availability; do not import a parking price from a separate similar-listing advert. Ask whether 1 December move-in can be agreed without paying from 20 November.',
+  methodology:'Provisional 7.5/10 for rent, included services, shopping access, balcony/lift and flexible move-in. The furnished inventory is a meaningful mismatch, the energy grade is unknown and garage availability/cost and office routes are unresolved. Løren remains ahead for reported C grade and included garage. Furniture removal and the certificate could change the assessment.'
 }];
