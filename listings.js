@@ -129,4 +129,33 @@ window.SAVED_LISTINGS = [{
   ],
   costs:'Advertised rent NOK 17,500 includes the NOK 2,200 heating advance plus water/sewer charges; heating is reconciled against actual use. Electricity and internet/TV are extra; parking terms conflict within the ad. Security starts at three months of rent, implying at least NOK 52,500, but confirm the required amount. The ad offers either a deposit account or optional If tenant insurance. At 2.6%, the insurance is NOK 455/month (within its NOK 300–700 bounds), making NOK 17,955 before electricity/internet and heating adjustments. Do not add both alternatives automatically. The insurer may seek reimbursement from the tenant after a covered landlord loss.',
   methodology:'Provisional 7.5/10 overall: reported A grade, unfurnished status, local shopping and advertised base cost are positives; the later start, lease lock-in wording, unverified office routes and unclear parking remain material. Energy preference separately moves this listing ahead of unknown-grade listings in default order. That does not certify the grade, guarantee the all-in budget or override your hard cost/commute limits.'
+}, {
+  id:'478833015',title:'Løren · Kanonhallveien 38 A',address:'Kanonhallveien 38 A, 0585 Oslo',
+  url:'https://www.finn.no/realestate/lettings/ad.html?finnkode=478833015',
+  rent:18500,deposit:55500,area:48,bedrooms:1,score:8.5,furnishing:'partly furnished',energyGrade:'C',heatingLabel:'Light green (reported in the ad)',
+  source:'User-provided listing text explicitly reports energy grade C and a light-green heating label. Certificate, photos and live availability have not been independently checked.',
+  lat:59.930,lng:10.795,
+  locationNote:'Approximate Løren neighborhood reference, not a verified geocode of Kanonhallveien 38 A. Confirm the entrance and exact routes before comparing commute times.',
+  verdict:'Provisional 8.5/10: first viewing priority among the supplied listings for apartment-level fit, subject to acceptable office routes and lease terms. Reported grade C, included garage, included basic internet/TV, lift, balcony and a 1 December start make a strong package. Bislett remains the stronger neighborhood-lifestyle alternative.',
+  strengths:[
+    'Reported energy grade C qualifies for your A–C preference; the separate heating label is reported as light green. Request the certificate.',
+    '48 m² BRA-i advertised and one bedroom meet your minimums. Fifth floor with lift and a southwest-facing balcony of about 5 m².',
+    'NOK 18,500 total advertised rent includes water/sewer, basic internet/TV, garage parking and a NOK 589 advance for district heating/hot water. Do not add the NOK 589 again.',
+    'Garage space with an EV charger is advertised, unlike listings with only optional or unclear parking. Confirm access and any charging costs.',
+    'Advertised move-in 1 December 2026 or earlier matches your preferred date.',
+    'New kitchen appliances, repainted walls, new bedroom flooring, balanced ventilation and approximately 6 m² storage are described.',
+    'Local shops at Løren Torg and nearby metro/bus connections are described; these support a practical residential base.'
+  ],
+  checks:[
+    'Base rent is NOK 500 over your comfortable target before your own electricity subscription and any heating reconciliation or charging costs. The total is not fixed at NOK 18,500.',
+    'NOK 589 for district heating/hot water is an advance, reconciled at least annually. The ad says differences are payable within 14 days; request historic winter use and settlement bills.',
+    'Partly furnished: ask exactly what remains and whether unwanted furniture can be removed. Do not assume it is effectively unfurnished.',
+    'A fridge/freezer, cooker and dishwasher are listed as freestanding appliances, supplied while working with repair/replacement excluded by the advertised terms. A washing machine is not listed: clarify equipment and responsibility.',
+    'Displayed lease: 1 December 2026–30 November 2029. Three-month notice and binding-period wording mention 31 August 2027 and a minimum term until 30 November 2027. Ask the agent to confirm the earliest end date and notice deadline in writing.',
+    'Actual journeys to UiO and Sikt are unverified; proximity to a metro station does not establish a direct route or a journey under your preferred 30 minutes. Check transfers and final walks at working hours.',
+    'Løren offers shops and a residential setting but less established social street life than Bislett. Compare that tradeoff during a visit.',
+    'The FINN prompt about constant neighbor noise is a generic neighborhood survey, not a property-specific noise warning. Insulation, light, condition and layout have not been visually assessed.'
+  ],
+  costs:'Advertised total rent NOK 18,500 already includes the NOK 589 heating/hot-water advance, water/sewer, basic internet/TV and garage. Electricity requires your own subscription; clarify heating settlement, EV charging and any service upgrades. Security starts at three months, implying at least NOK 55,500; confirm the required amount. An optional If insurance alternative at 2.6% costs NOK 481/month, within its NOK 300–700 bounds, making NOK 18,981 before electricity and adjustments. Do not automatically add both the insurance and deposit; insurer reimbursement claims against the tenant may still apply.',
+  methodology:'Provisional 8.5/10 for the advertised standard lease package: reported C grade, garage, included basic services, lift/balcony and matching date are unusually close to your needs among the supplied listings. Partial furnishing, unverified commutes, annual utility adjustments and binding lease terms keep it conditional. First overall in the current saved-listing scores, not a claim of verified availability, market value or lower lifetime cost.'
 }];
