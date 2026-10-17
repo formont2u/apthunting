@@ -2,6 +2,7 @@
 window.RENTAL_PROFILE = {
   comfortableRent:18000, maximumRent:23000, minimumArea:45, bedrooms:1,
   comfortableCommute:30, maximumCommute:60,
+  preferredEnergyGrades:['A','B','C'],
   includes:['heating','water'], furnishing:'unfurnished preferred', parking:'preferred, not required',
   priorities:[
     {key:'proximity',label:'Work-area proximity',weight:30},

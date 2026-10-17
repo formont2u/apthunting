@@ -1,78 +1,105 @@
-// User-supplied listing facts, summarized; no live FINN retrieval or photo assessment.
+// Summaries of user-provided text, not a live FINN feed. Photos and energy certificates not supplied.
 window.SAVED_LISTINGS = [{
   id:'478815332',title:'Røa · Ostadalsveien 14',address:'Ostadalsveien 14, 0753 Oslo',
   url:'https://www.finn.no/realestate/lettings/ad.html?finnkode=478815332',
-  rent:18000,deposit:54000,area:70,bedrooms:1,possibleBedrooms:2,score:7.5,
-  source:'Texte de l’annonce fourni par vous · non revérifié sur FINN',
+  rent:18000,deposit:54000,area:70,bedrooms:1,possibleBedrooms:2,score:7.5,furnishing:'unfurnished',energyGrade:null,
+  source:'User-provided listing text; not rechecked on FINN. Photos and energy certificate not reviewed.',
   lat:59.9465,lng:10.6435,
-  locationNote:'Repère provisoire près de la station Røa, pas au numéro 14. Adresse non géocodée : vérifier l’emplacement exact sur FINN avant toute comparaison de trajet.',
-  verdict:'À visiter : très bon espace pour votre budget. Le 1er décembre est votre date idéale, pas une condition absolue ; discuter du début de bail et du coût d’un éventuel chevauchement.',
+  locationNote:'Approximate reference near Røa station, not number 14. The address has not been geocoded: confirm the exact entrance on FINN before routing.',
+  verdict:'Worth viewing for space and the advertised included utilities. A 1 December start is preferred, not mandatory; discuss the start date and any overlap cost.',
   strengths:[
-    '70 m² annoncés, contre votre minimum de 45 m² ; loué non meublé.',
-    '18 000 NOK/mois avec électricité et eau annoncées incluses. Confirmer que tout le chauffage est couvert.',
-    'Une chambre existe actuellement ; une deuxième peut être créée sur demande. Ne pas compter deux chambres acquises.',
-    'Commerces, cafés et espaces verts décrits à proximité ; environnement résidentiel correspondant à votre préférence B.'
+    'Advertised 70 m² exceeds your 45 m² minimum; offered unfurnished.',
+    'NOK 18,000/month with electricity and water advertised as included. Confirm that all heating is covered.',
+    'One existing bedroom; a second can reportedly be created on request. Do not assume two bedrooms already exist.',
+    'Local shops, cafés and green space are described nearby; a residential setting suits your first-choice lifestyle.'
   ],
   checks:[
-    'Annonce disponible immédiatement, dates affichées du 19/10/2026 au 19/10/2027. Négocier un début au 01/12/2026 et les dates exactes du bail flexible de 9–12 mois. Sinon, risque de payer environ six semaines avant votre arrivée.',
-    'Le propriétaire habite en dessous avec deux jeunes enfants et annonce des bruits, y compris tôt le matin. Tester l’isolation lors de la visite.',
-    'Parking non mentionné ; vérifier disponibilité et prix. Internet/TV non installés, abonnement à votre charge.',
-    'Entrée principale commune, entrée du logement verrouillable ; lave-linge et sèche-linge à disposition au sous-sol, pas annoncés comme privatifs.',
-    'Le trajet de 5 min à pied au métro puis 10 min à Majorstuen est une affirmation du bailleur, pas une mesure porte-à-porte. Vérifier séparément UiO et Sikt aux horaires habituels.',
-    'Photos non fournies ici : état, lumière, isolation et disposition ne sont pas évalués visuellement.'
+    'Available immediately, with displayed dates 19 October 2026–19 October 2027 and a flexible 9–12 month term. Discuss your ideal 1 December start; starting in October could mean paying roughly six weeks before your move.',
+    'The owner lives downstairs with two young children and explicitly warns of normal household noise, including early mornings. Test sound insulation during a viewing.',
+    'Parking is not mentioned. Broadband/TV are not installed; a subscription would be your responsibility.',
+    'Shared main entrance with a lockable apartment entrance. Washer and dryer are available in the basement, not advertised as private appliances.',
+    'The advertised five-minute walk to the metro and ten-minute ride to Majorstuen are landlord claims, not verified door-to-door journeys to UiO or Sikt.',
+    'Energy grade is unknown: request the certificate. No photographs were supplied for assessing condition, light or layout.'
   ],
-  costs:'Bail classique annoncé : 18 000 NOK/mois et 54 000 NOK de dépôt sur compte de dépôt DNB. L’encart Trygg leie/Qasa est une option à distinguer : si choisie, 4,98 % = 896,40 NOK/mois, soit 18 896,40 NOK avant internet et éventuel parking. Ne pas additionner automatiquement le dépôt classique et cette option.',
-  methodology:'Note éditoriale provisoire, non expertise : forte correspondance budget/espace/non-meublé ; réserves sur calendrier, nuisances sonores, parking et trajets non vérifiés. Le 1er décembre est une préférence, pas un critère éliminatoire. La note reste provisoire selon les charges réellement incluses, l’isolation et le coût d’un éventuel début de bail plus tôt.'
+  costs:'Standard lease: NOK 18,000/month and NOK 54,000 deposit, advertised on a DNB deposit account. Optional Trygg leie/Qasa: 4.98% of rent = NOK 896.40/month, or NOK 18,896.40 before internet and parking. Do not automatically combine the standard deposit and this optional service.',
+  methodology:'Provisional editorial score: strong space/budget/unfurnished fit, with unresolved start date, noise, parking and office routes. A 1 December start is a preference, not a rejection rule. No energy bonus is awarded without a confirmed grade.'
 }, {
   id:'310698314',title:'Bislett · Glückstads gate 6',address:'Glückstads gate 6, 0170 Oslo',
   url:'https://www.finn.no/realestate/lettings/ad.html?finnkode=310698314',
-  rent:18500,deposit:55500,area:54,bedrooms:1,score:8,
-  source:'Texte fourni par vous · FINN 310698314 · non revérifié en ligne ; photos non examinées',
+  rent:18500,deposit:55500,area:54,bedrooms:1,score:8,furnishing:'unfurnished',energyGrade:null,
+  source:'User-provided listing text; not rechecked online. Photos and energy certificate not reviewed.',
   lat:59.923,lng:10.738,
-  locationNote:'Repère de quartier approximatif dans le secteur Bislett, pas une géolocalisation vérifiée de Glückstads gate 6. Vérifier l’adresse et l’entrée sur FINN avant de calculer les trajets.',
-  verdict:'Ma première candidate à visiter des deux : meilleur accord avec vos priorités commerces/vie sociale/parcs et début annoncé exactement le 1er décembre. Røa garde l’avantage sur la surface et les charges annoncées incluses.',
+  locationNote:'Approximate Bislett neighborhood reference, not a verified geocode of Glückstads gate 6. Confirm the address and entrance before routing.',
+  verdict:'First viewing priority for your shops/social life/parks preferences and the advertised 1 December start. Røa offers more space and more advertised included utilities.',
   strengths:[
-    '54 m² annoncés, une chambre séparée : vos minimums de 45 m² et une chambre sont respectés.',
-    'Non meublé, avec électroménager annoncé pour la cuisine et la salle de bains.',
-    'Début de location annoncé le 01/12/2026 ; fin affichée au 31/12/2029. Cette date de début correspond à votre préférence.',
-    'Commerces, cafés, restaurants et parcs décrits à proximité : forte correspondance avec vos trois priorités de quartier.',
-    'Rue décrite comme calme et en retrait, malgré une localisation centrale. À vérifier pendant la visite.'
+    'Advertised 54 m² and one separate bedroom meet your minimum requirements.',
+    'Unfurnished, with appliances advertised for the kitchen and bathroom.',
+    'Displayed term: 1 December 2026–31 December 2029; the start matches your ideal date.',
+    'Shops, cafés, restaurants and parks described nearby strongly match your neighborhood priorities.',
+    'Described as a quiet side street despite the central location; verify this during a viewing.'
   ],
   checks:[
-    '18 500 NOK de loyer seul, déjà 500 NOK au-dessus de votre cible de 18 000 NOK chauffage/eau compris. Électricité explicitement exclue et abonnement à votre charge ; chauffage, eau chaude et eau à clarifier.',
-    'Appartement au 4e étage selon l’annonce. Ascenseur non mentionné : poser la question et tester les escaliers.',
-    'Parking non mentionné. Demander disponibilité, conditions et prix ; ne pas supposer une place incluse.',
-    'Bredbåndstilknytning signifie raccordement au haut débit, pas abonnement internet payé. Confirmer les frais, le débit et l’opérateur.',
-    'Liaisons tram/bus décrites par le bailleur, mais trajets porte-à-porte vers UiO et Sikt non vérifiés. Les numéros de lignes et temps de marche doivent être recontrôlés.',
-    'Confirmer résiliation, préavis, éventuelle durée minimale et conditions du bail affiché jusqu’en décembre 2029 ; ne pas déduire ces règles des seules dates.',
-    'Pas d’avertissement spécifique de bruit dans le texte, ce qui ne garantit pas l’isolation. Photos et plan non fournis ici : lumière, état et agencement non évalués visuellement.'
+    'NOK 18,500 base rent is already NOK 500 over your comfortable target including heating/water. Electricity is explicitly excluded; clarify heating, hot water and water charges.',
+    'Advertised on the fourth floor. A lift is not mentioned: ask and try the stairs.',
+    'Parking is not mentioned. Ask about availability, conditions and price.',
+    'A broadband connection does not mean a paid internet subscription. Confirm provider, speed and monthly cost.',
+    'Advertised tram/bus links and walking times are not verified office journeys. Check current routes to UiO and Sikt.',
+    'Confirm notice, minimum term and termination conditions; the displayed end date alone does not establish these.',
+    'No specific noise warning does not prove good insulation. Energy grade is unknown; request the certificate. Photos and floor plan were not supplied.'
   ],
-  costs:'18 500 NOK/mois hors électricité. Dépôt de trois mois demandé : 55 500 NOK calculés à partir du loyer. Total mensuel non déterminable sans chauffage/eau, internet et parking ; le plafond de 23 000 NOK n’est donc pas encore confirmé. Demander un historique des charges, surtout en hiver, et les modalités du compte de dépôt.',
-  methodology:'Note éditoriale provisoire de 8/10 : localisation, services, non-meublé et calendrier favorables ; réserve principale sur le budget tout compris, puis le 4e étage, le parking et les trajets non vérifiés. Elle passe devant Røa pour vos priorités de quartier, mais pas sur la surface ni sur le coût annoncé. Ce n’est pas une estimation de prix de marché.'
+  costs:'NOK 18,500/month excluding electricity. Three-month deposit requested: NOK 55,500, calculated from rent. Total cost cannot be established without heating/water, internet and parking charges, so compliance with your NOK 23,000 ceiling is not confirmed. Request winter utility history and deposit-account details.',
+  methodology:'Provisional 8/10 for location, amenities, unfurnished status and timing. Main uncertainties: total cost, lift, parking, actual office journeys and energy grade. This is not a market valuation. No unverified energy bonus is included.'
 }, {
   id:'478691222',title:'Rodeløkka · Marstrandgata 4',address:'Marstrandgata 4, 0566 Oslo',
   url:'https://www.finn.no/realestate/lettings/ad.html?finnkode=478691222',
-  rent:22000,deposit:66000,area:52,bedrooms:1,score:7,furnishing:'partiellement meublé',
-  source:'Texte fourni par vous · FINN 478691222 · non revérifié en ligne ; photos non examinées',
+  rent:22000,deposit:66000,area:52,bedrooms:1,score:7,furnishing:'partly furnished',energyGrade:null,
+  source:'User-provided listing text; not rechecked online. Photos and energy certificate not reviewed.',
   lat:59.928,lng:10.776,
-  locationNote:'Repère de quartier approximatif à Rodeløkka, pas une géolocalisation vérifiée de Marstrandgata 4. Vérifier le numéro et l’entrée sur FINN avant tout calcul de trajet.',
-  verdict:'7/10 provisoire sans garage : prestations intéressantes, mais nettement au-dessus de votre budget confortable. Avec garage à 1 500 NOK/mois, le total annoncé atteint déjà 23 500 NOK, au-dessus de votre plafond de 23 000 NOK avant tout autre supplément.',
+  locationNote:'Approximate Rodeløkka neighborhood reference, not a verified geocode of Marstrandgata 4. Confirm the address and entrance before routing.',
+  verdict:'Provisional 7/10 without parking: attractive amenities but well above your comfortable budget. With the NOK 1,500 garage, rent reaches NOK 23,500 before any other extras, exceeding your ceiling.',
   strengths:[
-    '52 m² annoncés et une chambre séparée : vos minimums sont respectés.',
-    'Chauffage central, eau chaude, câble TV et haut débit annoncés inclus : plus de visibilité sur certains frais que l’annonce de Bislett.',
-    '5e étage avec ascenseur annoncé, vidéophone et immeuble présenté comme datant de 2014.',
-    'Bail affiché du 01/12/2026 au 31/12/2027 : le début correspond à votre date idéale.',
-    'Grande terrasse commune sur le toit décrite ; balcon annoncé dans le résumé. Commerces et vie sociale du secteur cohérents avec vos priorités.'
+    'Advertised 52 m² and one separate bedroom meet your minimums.',
+    'Central heating, hot water, cable TV and broadband advertised as included.',
+    'Fifth floor with advertised lift and video intercom; building described as dating from 2014.',
+    'Displayed lease: 1 December 2026–31 December 2027, matching your ideal start.',
+    'Shared roof terrace described and a balcony advertised in the summary. Nearby shops and social life fit your priorities.'
   ],
   checks:[
-    '22 000 NOK de loyer : 4 000 NOK au-dessus de votre cible. Électricité privative et eau froide non précisées comme incluses ; confirmer les charges et les dépenses habituelles.',
-    'Garage optionnel à 1 500 NOK/mois : total 23 500 NOK avant tout autre supplément. Cette configuration dépasse votre plafond ; il faudrait renoncer au garage ou négocier.',
-    'Partiellement meublé, contrairement à votre préférence : demander la liste des meubles et si leur retrait est possible sans supplément.',
-    'L’annonce mentionne un emplacement et un raccordement pour lave-linge, pas une machine fournie. Lave-vaisselle non précisé : vérifier ces deux équipements.',
-    'Confirmer que le balcon annoncé est privatif, son accès et sa taille. Ne pas confondre avec la terrasse commune sur le toit.',
-    'Trajets complets vers UiO et Sikt non vérifiés. Les temps bus/tram/métro affichés sont des indications de l’annonce, pas vos trajets porte-à-porte.',
-    'Confirmer résiliation, préavis, durée minimale, disponibilité réelle du garage et conditions du dépôt. Photos non fournies ici : lumière, état et isolation non évalués visuellement.'
+    'NOK 22,000 rent is NOK 4,000 above your comfortable target. Private electricity and cold water are not explicitly included: confirm charges and typical bills.',
+    'Optional garage: NOK 1,500/month, making NOK 23,500 before other extras. This exceeds your maximum; omit the garage or negotiate.',
+    'Partly furnished, unlike your preference. Ask which furniture stays and whether removal is possible without extra cost.',
+    'Only a washing-machine space and connection are described, not an included machine. A dishwasher is not specified.',
+    'Confirm whether the advertised balcony is private and its size; do not confuse it with the shared roof terrace.',
+    'Office journeys are unverified. Confirm notice, minimum term, garage availability and deposit terms.',
+    'A 2014 building does not establish an A–C energy grade. Request the certificate. No visual assessment of photos, light, condition or insulation has been made.'
   ],
-  costs:'Bail classique : 22 000 NOK/mois et dépôt annoncé de 66 000 NOK. Garage optionnel : +1 500 NOK, soit 23 500 NOK/mois. Si l’option Trygg leie/Qasa est choisie, 4,98 % du loyer de 22 000 NOK = 1 095,60 NOK/mois : 23 095,60 NOK sans garage ou 24 595,60 NOK avec garage, avant autres suppléments. Ce calcul applique le pourcentage au loyer seul ; confirmer l’assiette exacte des frais. L’encart Qasa est une option, pas un supplément automatiquement obligatoire ni un montant à additionner d’office au dépôt classique.',
-  methodology:'Note éditoriale provisoire de 7/10 pour le scénario bail classique sans garage : chauffage/eau chaude/internet inclus, ascenseur et calendrier favorables ; coût proche du plafond, ameublement partiel et trajets non vérifiés défavorables. Elle reste derrière Bislett (8/10) et Røa (7,5/10) pour vos critères. Le scénario avec garage dépasse le plafond déclaré ; il ne doit pas être présenté comme compatible avec votre budget.'
+  costs:'Standard lease: NOK 22,000/month and NOK 66,000 advertised deposit. Optional garage: NOK 1,500, giving NOK 23,500. Optional Trygg leie/Qasa at 4.98% of base rent adds NOK 1,095.60: NOK 23,095.60 without a garage or NOK 24,595.60 with it, before other extras. Confirm the exact fee basis; the service is not automatically mandatory or combined with the standard deposit.',
+  methodology:'Provisional 7/10 for a standard lease without parking. Included heating/hot water/internet, lift and timing help; near-ceiling cost, partial furnishing and unverified routes work against it. The garage scenario exceeds your declared maximum. Unknown energy grade receives no bonus.'
+}, {
+  id:'478729099',title:'Fornebu / Lysaker · Magnus Poulssons vei 14',address:'Magnus Poulssons vei 14, 1366 Lysaker',
+  url:'https://www.finn.no/realestate/lettings/ad.html?finnkode=478729099',
+  rent:17900,deposit:53700,area:46,bedrooms:1,score:7.5,furnishing:'partly furnished',energyGrade:null,
+  source:'User-provided listing text; not rechecked online. The pasted Energy rating heading contains no grade. Photos and certificate not reviewed.',
+  lat:59.913,lng:10.6374,
+  locationNote:'Approximate reference near Lysaker station, not a geocode of Magnus Poulssons vei 14. The ad calls the area Fornebu and gives a Lysaker postal address; confirm the exact entrance and walking routes.',
+  verdict:'Provisional 7.5/10: worth comparing for its base rent, lift and balcony. It is available on 9 December, eight days after your ideal move, is partly furnished, and has no readable energy grade in the supplied text.',
+  strengths:[
+    'NOK 17,900 base rent is NOK 100 below your comfortable target, but unknown utilities may take the total above it.',
+    'Advertised 46 m² and one bedroom meet your minimums, though only just on floor area.',
+    'Lift, balcony, dishwasher, kitchen appliances, bedroom wardrobe and basement storage advertised.',
+    'TV and broadband explicitly advertised as included. Coastal walks and green space described nearby.',
+    'Both short- and long-term rental are considered; discuss the precise term and notice conditions.'
+  ],
+  checks:[
+    'Available from 9 December 2026, not 1 December. Decide whether an eight-day gap, temporary accommodation or a negotiated earlier start would work.',
+    'The text has an Energy rating heading but no letter. Treat the grade as unknown, not A, B or C. Request the energy certificate before giving it an efficiency preference.',
+    'Heating, electricity, hot water and cold water are not explicitly listed as included. The phrase TV, broadband and more is insufficient to assume utilities are paid.',
+    'Partly furnished: ask for an inventory and whether unwanted furniture can be removed.',
+    'Parking is not mentioned. Confirm availability and cost. A washing machine is not explicitly listed.',
+    'The ad suggests an 11-minute walk to rail, three minutes to bus and nine minutes to groceries. These are unverified listing estimates, not exact-address routes to your offices.',
+    'This is a quieter coastal/residential alternative, with less of your preferred inner-city social atmosphere. Check both office journeys at working hours.',
+    'No photos or floor plan were supplied for visual assessment. Modern/new wording and bathroom underfloor heating do not prove an A–C energy grade or low bills.'
+  ],
+  costs:'NOK 17,900/month; advertised deposit NOK 53,700. TV/broadband included; utility and parking costs remain unknown, so the all-in total is unconfirmed. Optional Qasa at 4.98% of base rent adds NOK 891.42/month: NOK 18,791.42 before other extras. The standard deposit and optional service must not automatically be combined. Budget separately for any accommodation needed on 1–8 December.',
+  methodology:'Provisional 7.5/10 for base price, minimum space, amenities and coastal setting. Partial furnishing, the 9 December start, unverified utility/parking costs, office journeys and weaker social-life fit are reservations. No A–C bonus is awarded: the energy grade is unknown. Actual total cost and the certificate may change this assessment.'
 }];

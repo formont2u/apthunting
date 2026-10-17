@@ -186,37 +186,47 @@ function render(){
 const savedListings=[...(window.SAVED_LISTINGS || [])].sort((a,b)=>b.score-a.score);
 const listingMarkers=new Map();
 function listingContent(listing,expanded=false){
-  const root=document.createElement('article');root.className='listing-card';root.lang='fr';
+  const root=document.createElement('article');root.className='listing-card';root.lang='en';
   const title=document.createElement('h3');title.textContent=listing.title;
-  const score=document.createElement('p');score.className='listing-score';score.textContent=`${listing.score}/10 · note provisoire`;
-  const facts=document.createElement('p');facts.textContent=`${listing.rent.toLocaleString('fr-FR')} NOK/mois · ${listing.area} m² annoncés · ${listing.bedrooms} chambre${listing.bedrooms>1?'s':''} existante${listing.bedrooms>1?'s':''} · ${listing.furnishing || 'non meublé'}`;
+  const score=document.createElement('p');score.className='listing-score';score.textContent=`${listing.score}/10 · provisional score`;
+  const facts=document.createElement('p');facts.textContent=`NOK ${listing.rent.toLocaleString('en-GB')}/month · ${listing.area} m² advertised · ${listing.bedrooms} bedroom${listing.bedrooms>1?'s':''} · ${listing.furnishing || 'unfurnished'}`;
   const verdict=document.createElement('p');verdict.textContent=listing.verdict;
   const location=document.createElement('p');location.className='location-warning';location.textContent=listing.locationNote;
-  root.append(title,score,facts,verdict,location);
+  const energy=document.createElement('p');energy.className='energy-status';energy.textContent=listing.energyGrade?'Energy grade: '+listing.energyGrade+(preferredEnergy(listing)?' · preferred A–C':' · outside your A–C preference'):'Energy grade: unknown · certificate needed';
+  root.append(title,score,facts,energy,verdict,location);
   const details=document.createElement('details');details.open=expanded;
-  const summary=document.createElement('summary');summary.textContent='Analyse, frais et points à vérifier';details.append(summary);
-  for(const [heading,items] of [['Points forts',listing.strengths],['À confirmer',listing.checks]]){
+  const summary=document.createElement('summary');summary.textContent='Assessment, costs and checks';details.append(summary);
+  for(const [heading,items] of [['Strengths',listing.strengths],['To confirm',listing.checks]]){
     const h=document.createElement('h4');h.textContent=heading;const ul=document.createElement('ul');
     items.forEach(text=>{const li=document.createElement('li');li.textContent=text;ul.append(li);});details.append(h,ul);
   }
   for(const text of [listing.costs,listing.methodology,listing.source]){const paragraph=document.createElement('p');paragraph.textContent=text;details.append(paragraph);}
-  const link=document.createElement('a');link.href=listing.url;link.target='_blank';link.rel='noopener';link.textContent='Voir sur FINN · '+listing.id;
+  const link=document.createElement('a');link.href=listing.url;link.target='_blank';link.rel='noopener';link.textContent='View on FINN · '+listing.id;
   root.append(details,link);return root;
 }
-if(map){
-  listingLayer=L.layerGroup().addTo(map);
-  savedListings.forEach(listing=>{
-    const icon=L.divIcon({className:'listing-icon',html:'<svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m2 11 10-8 10 8M5 9v12h14V9M10 21v-7h4v7"/></svg><span>≈</span>',iconSize:[42,42],iconAnchor:[21,21],popupAnchor:[0,-24]});
-    const marker=L.marker([listing.lat,listing.lng],{title:listing.title+' · position approximative',icon}).addTo(listingLayer).bindTooltip(listing.title+' · '+listing.score+'/10 · repère approximatif').bindPopup(()=>listingContent(listing),{maxWidth:350});
-    listingMarkers.set(listing.id,marker);
+function preferredEnergy(listing){return profile.preferredEnergyGrades.includes(listing.energyGrade);}
+if(map)listingLayer=L.layerGroup().addTo(map);
+function renderListings(){
+  const mode=$('energy-filter').value;
+  const visible=savedListings.filter(item=>mode!=='only'||preferredEnergy(item)).sort((a,b)=>
+    (mode==='prefer'?Number(preferredEnergy(b))-Number(preferredEnergy(a)):0)||b.score-a.score);
+  $('saved-listings').replaceChildren();listingLayer?.clearLayers();listingMarkers.clear();
+  $('listing-count').textContent=visible.length+' of '+savedListings.length+' listings shown.';
+  if(!visible.length){const empty=document.createElement('p');empty.textContent='No confirmed A–C listings available. Missing grades are not assumed to qualify; request the certificates or show all listings.';$('saved-listings').append(empty);}
+  visible.forEach(listing=>{
+    if(map){
+      const icon=L.divIcon({className:'listing-icon',html:'<svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m2 11 10-8 10 8M5 9v12h14V9M10 21v-7h4v7"/></svg><span>≈</span>',iconSize:[42,42],iconAnchor:[21,21],popupAnchor:[0,-24]});
+      const marker=L.marker([listing.lat,listing.lng],{title:listing.title+' · approximate location',icon}).addTo(listingLayer).bindTooltip(listing.title+' · '+listing.score+'/10 · approximate reference').bindPopup(()=>listingContent(listing),{maxWidth:350});
+      listingMarkers.set(listing.id,marker);
+    }
+    const card=listingContent(listing);
+    const button=document.createElement('button');button.className='show-listing';button.textContent='Show approximate location';button.disabled=!map;
+    button.onclick=()=>{if(map){$('show-listings').checked=true;listingLayer.addTo(map);map.setView([listing.lat,listing.lng],15,{animate:false});listingMarkers.get(listing.id).openPopup();}};
+    card.append(button);$('saved-listings').append(card);
   });
 }
-savedListings.forEach(listing=>{
-  const card=listingContent(listing);
-  const button=document.createElement('button');button.className='show-listing';button.textContent='Voir le repère sur la carte';button.disabled=!map;
-  button.onclick=()=>{if(map){$('show-listings').checked=true;listingLayer.addTo(map);map.setView([listing.lat,listing.lng],15,{animate:false});listingMarkers.get(listing.id).openPopup();}};
-  card.append(button);$('saved-listings').append(card);
-});
+$('energy-filter').addEventListener('input',renderListings);
+renderListings();
 $('show-listings').addEventListener('input',()=>{if(map){if($('show-listings').checked)listingLayer.addTo(map);else map.removeLayer(listingLayer);}});
 $('ranking-method').textContent=profile.priorities.map(p=>p.label+' '+p.weight+'%').join(' · ')+'. Both work areas count equally; proximity is a geographic judgment, not a transit-time calculation. Budget and floor area are listing requirements, not assumed neighborhood prices.';
 $('show-work').addEventListener('input',()=>{if(map){if($('show-work').checked)workLayer.addTo(map);else map.removeLayer(workLayer);}});
