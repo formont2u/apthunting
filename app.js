@@ -189,7 +189,7 @@ function listingContent(listing,expanded=false){
   const root=document.createElement('article');root.className='listing-card';root.lang='fr';
   const title=document.createElement('h3');title.textContent=listing.title;
   const score=document.createElement('p');score.className='listing-score';score.textContent=`${listing.score}/10 · note provisoire`;
-  const facts=document.createElement('p');facts.textContent=`${listing.rent.toLocaleString('fr-FR')} NOK/mois · ${listing.area} m² annoncés · 1 chambre existante · non meublé`;
+  const facts=document.createElement('p');facts.textContent=`${listing.rent.toLocaleString('fr-FR')} NOK/mois · ${listing.area} m² annoncés · ${listing.bedrooms} chambre${listing.bedrooms>1?'s':''} existante${listing.bedrooms>1?'s':''} · ${listing.furnishing || 'non meublé'}`;
   const verdict=document.createElement('p');verdict.textContent=listing.verdict;
   const location=document.createElement('p');location.className='location-warning';location.textContent=listing.locationNote;
   root.append(title,score,facts,verdict,location);

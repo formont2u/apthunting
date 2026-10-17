@@ -49,4 +49,30 @@ window.SAVED_LISTINGS = [{
   ],
   costs:'18 500 NOK/mois hors électricité. Dépôt de trois mois demandé : 55 500 NOK calculés à partir du loyer. Total mensuel non déterminable sans chauffage/eau, internet et parking ; le plafond de 23 000 NOK n’est donc pas encore confirmé. Demander un historique des charges, surtout en hiver, et les modalités du compte de dépôt.',
   methodology:'Note éditoriale provisoire de 8/10 : localisation, services, non-meublé et calendrier favorables ; réserve principale sur le budget tout compris, puis le 4e étage, le parking et les trajets non vérifiés. Elle passe devant Røa pour vos priorités de quartier, mais pas sur la surface ni sur le coût annoncé. Ce n’est pas une estimation de prix de marché.'
+}, {
+  id:'478691222',title:'Rodeløkka · Marstrandgata 4',address:'Marstrandgata 4, 0566 Oslo',
+  url:'https://www.finn.no/realestate/lettings/ad.html?finnkode=478691222',
+  rent:22000,deposit:66000,area:52,bedrooms:1,score:7,furnishing:'partiellement meublé',
+  source:'Texte fourni par vous · FINN 478691222 · non revérifié en ligne ; photos non examinées',
+  lat:59.928,lng:10.776,
+  locationNote:'Repère de quartier approximatif à Rodeløkka, pas une géolocalisation vérifiée de Marstrandgata 4. Vérifier le numéro et l’entrée sur FINN avant tout calcul de trajet.',
+  verdict:'7/10 provisoire sans garage : prestations intéressantes, mais nettement au-dessus de votre budget confortable. Avec garage à 1 500 NOK/mois, le total annoncé atteint déjà 23 500 NOK, au-dessus de votre plafond de 23 000 NOK avant tout autre supplément.',
+  strengths:[
+    '52 m² annoncés et une chambre séparée : vos minimums sont respectés.',
+    'Chauffage central, eau chaude, câble TV et haut débit annoncés inclus : plus de visibilité sur certains frais que l’annonce de Bislett.',
+    '5e étage avec ascenseur annoncé, vidéophone et immeuble présenté comme datant de 2014.',
+    'Bail affiché du 01/12/2026 au 31/12/2027 : le début correspond à votre date idéale.',
+    'Grande terrasse commune sur le toit décrite ; balcon annoncé dans le résumé. Commerces et vie sociale du secteur cohérents avec vos priorités.'
+  ],
+  checks:[
+    '22 000 NOK de loyer : 4 000 NOK au-dessus de votre cible. Électricité privative et eau froide non précisées comme incluses ; confirmer les charges et les dépenses habituelles.',
+    'Garage optionnel à 1 500 NOK/mois : total 23 500 NOK avant tout autre supplément. Cette configuration dépasse votre plafond ; il faudrait renoncer au garage ou négocier.',
+    'Partiellement meublé, contrairement à votre préférence : demander la liste des meubles et si leur retrait est possible sans supplément.',
+    'L’annonce mentionne un emplacement et un raccordement pour lave-linge, pas une machine fournie. Lave-vaisselle non précisé : vérifier ces deux équipements.',
+    'Confirmer que le balcon annoncé est privatif, son accès et sa taille. Ne pas confondre avec la terrasse commune sur le toit.',
+    'Trajets complets vers UiO et Sikt non vérifiés. Les temps bus/tram/métro affichés sont des indications de l’annonce, pas vos trajets porte-à-porte.',
+    'Confirmer résiliation, préavis, durée minimale, disponibilité réelle du garage et conditions du dépôt. Photos non fournies ici : lumière, état et isolation non évalués visuellement.'
+  ],
+  costs:'Bail classique : 22 000 NOK/mois et dépôt annoncé de 66 000 NOK. Garage optionnel : +1 500 NOK, soit 23 500 NOK/mois. Si l’option Trygg leie/Qasa est choisie, 4,98 % du loyer de 22 000 NOK = 1 095,60 NOK/mois : 23 095,60 NOK sans garage ou 24 595,60 NOK avec garage, avant autres suppléments. Ce calcul applique le pourcentage au loyer seul ; confirmer l’assiette exacte des frais. L’encart Qasa est une option, pas un supplément automatiquement obligatoire ni un montant à additionner d’office au dépôt classique.',
+  methodology:'Note éditoriale provisoire de 7/10 pour le scénario bail classique sans garage : chauffage/eau chaude/internet inclus, ascenseur et calendrier favorables ; coût proche du plafond, ameublement partiel et trajets non vérifiés défavorables. Elle reste derrière Bislett (8/10) et Røa (7,5/10) pour vos critères. Le scénario avec garage dépasse le plafond déclaré ; il ne doit pas être présenté comme compatible avec votre budget.'
 }];
