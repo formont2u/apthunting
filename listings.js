@@ -213,4 +213,32 @@ window.SAVED_LISTINGS = [{
   ],
   costs:'Base rent NOK 19,400; optional garage NOK 1,000 gives NOK 20,400. Basic internet is included. Heating/hot-water inclusion conflicts with zero advances and annual settlement, so their real cost is unresolved; private electricity is extra. Security starts at three months, implying at least NOK 58,200; confirm the amount. Optional If insurance at 2.6% of base rent is NOK 504.40/month: NOK 19,904.40 without garage or NOK 20,904.40 with it, before other costs. Confirm the fee basis if parking is bundled. The deposit account and insurance are alternatives, not automatically combined.',
   methodology:'Provisional 7.5/10: unfurnished status, reported B grade, matching start and amenities are positives. At exactly 45 m², higher rent and unclear utility billing, the listing needs clarification before ranking higher. Grade B does not resolve the billing contradiction or prove office commutes. It remains behind Løren’s 8.5/10 advertised package under the current evidence.'
+}, {
+  id:'478885148',title:'Nydalen · Gunnar Schjelderups vei 11S',address:'Gunnar Schjelderups vei 11S, 0485 Oslo',
+  url:'https://www.finn.no/realestate/lettings/ad.html?finnkode=478885148',
+  rent:20000,deposit:50000,area:45,bedrooms:1,score:6.5,furnishing:'partly furnished',energyGrade:null,
+  source:'User-provided listing text; no readable energy grade supplied. Photos, certificate and live availability not independently checked.',
+  lat:59.950,lng:10.766,
+  locationNote:'Approximate Nydalen neighborhood reference, not a verified geocode of Gunnar Schjelderups vei 11S. Confirm the entrance, station walk and office routes.',
+  verdict:'Provisional 6.5/10 for a settled-home search: a possible seven-month bridge, not an advertised long-term solution. The 1 December start and outdoor space fit, but the 30 June end date, higher rent, partial furnishing and unknown energy grade make it a lower priority than Løren.',
+  strengths:[
+    'Displayed start 1 December 2026 matches your ideal move date.',
+    '45 m² and one bedroom meet your minimums, though only exactly on floor area.',
+    'Private northwest-facing ground-level terrace of about 20 m², plus a separate shared roof terrace described. These are distinct spaces.',
+    'Hot water and internet advertised as included. Integrated kitchen appliances, dishwasher, lift and about 5 m² basement storage described.',
+    'Nydalen/Storo shops and transport are described nearby; an attractive area to compare for daily practicality and river walks.'
+  ],
+  checks:[
+    'Displayed lease runs 1 December 2026–30 June 2027, about seven months. No extension is promised. Ask whether renewal is possible and what terms apply before planning a permanent move around it.',
+    'NOK 20,000 base rent is NOK 2,000 above your comfortable target. Heating and electricity are not explicitly included; confirm heating, cold water, electricity and other charges separately from included hot water.',
+    'No energy letter is readable in the supplied text. A 2006 build date does not establish an A–C grade: request the certificate.',
+    'Partly furnished: request a full inventory and removal options. The description explicitly excludes a sofa and tumble dryer; do not interpret this as fully unfurnished.',
+    'Parking is not advertised. Confirm whether a space can be obtained, its price and any permit conditions.',
+    'Ground-level terrace and advertised floor 1: verify privacy, security, daylight, terrace access and the actual level at the entrance. The northwest-facing private terrace does not inherit the shared roof terrace’s all-day-sun claim.',
+    'Actual journeys to UiO/Sikt are unverified. The ad’s walking estimates are not complete office commutes.',
+    'Husleie.no/BankID signing is advertised. If you do not yet have BankID, ask about an alternative signing process. Confirm notice/early termination, deposit arrangements and any guarantee charges.',
+    'The ad lists a viewing on 22 November, 14:30–16:00; confirm the appointment directly. Photos were not supplied for visual assessment. Pets and smoking are prohibited according to the text.'
+  ],
+  costs:'NOK 20,000/month and an explicitly advertised NOK 50,000 deposit, not an assumed three-month amount. Hot water and internet included; heating/electricity/cold-water treatment and parking remain unconfirmed. A Husleie.no/Instabank deposit account is described. A deposit-guarantee alternative is mentioned without its fee: do not reuse Qasa or If percentages from other adverts. Budget for a possible second move after 30 June 2027 if no extension is agreed.',
+  methodology:'Provisional 6.5/10 assuming you prefer to settle rather than move again after seven months. This is a preference assumption, not a hard rejection: if a temporary bridge is desirable, reassess the term accordingly. Matching start and terrace are positives; price, unknown heating/energy, partial furnishing and unverified parking/routes reduce current fit.'
 }];
