@@ -185,4 +185,32 @@ window.SAVED_LISTINGS = [{
   ],
   costs:'Advertised rent NOK 17,900 and deposit NOK 53,700. Heating, hot water, cable TV and internet are stated as included; confirm the terms and any settlement. Electricity/cold-water treatment and garage cost remain unconfirmed, so the all-in budget is not established. A garage is subject to availability; do not import a parking price from a separate similar-listing advert. Ask whether 1 December move-in can be agreed without paying from 20 November.',
   methodology:'Provisional 7.5/10 for rent, included services, shopping access, balcony/lift and flexible move-in. The furnished inventory is a meaningful mismatch, the energy grade is unknown and garage availability/cost and office routes are unresolved. Løren remains ahead for reported C grade and included garage. Furniture removal and the certificate could change the assessment.'
+}, {
+  id:'478635135',title:'Ensjø · Sigurd Hoels vei 49',address:'Sigurd Hoels vei 49, 0655 Oslo',
+  url:'https://www.finn.no/realestate/lettings/ad.html?finnkode=478635135',
+  rent:19400,deposit:58200,area:45,bedrooms:1,score:7.5,furnishing:'unfurnished',energyGrade:'B',heatingLabel:'Dark green (reported in the ad)',
+  source:'User-provided listing text reports grade B and a dark-green heating label. Certificate, photos and live availability have not been independently checked.',
+  lat:59.915,lng:10.798,
+  locationNote:'Approximate Ensjø station-area reference, not a verified geocode of Sigurd Hoels vei 49 in Tiedemannsbyen. Confirm the entrance and walking routes before routing to work.',
+  verdict:'Provisional 7.5/10: reported grade B, unfurnished status, lift/balcony and a 1 December start fit well. The main reservation is contradictory heating/hot-water billing; clarify it before treating this as an all-in offer. Løren remains ahead on the advertised parking/services package and floor area.',
+  strengths:[
+    'Reported energy grade B qualifies for your A–C preference. The separate heating label is reported as dark green; request the certificate.',
+    'Unfurnished, with one bedroom and advertised 45 m² BRA-i: meets your exact minimum area, with no spare margin.',
+    'Second floor with lift and balcony; the building is described as dating from 2016.',
+    'Integrated fridge/freezer, dishwasher, cooker and hob are listed. Basic internet is explicitly included.',
+    'Displayed start 1 December 2026 matches your ideal date.',
+    'Optional garage with an EV charger is advertised at NOK 1,000/month, and local shops/metro access are described nearby.'
+  ],
+  checks:[
+    'The title/description say heating and hot water are included, with excess use billed later. The rent section instead lists heating advance NOK 0 and hot-water advance NOK 0, then annual reconciliation. Ask for the actual included allowance, tariff, billing basis and past settlement bills in writing; do not assume free or unlimited heating.',
+    'NOK 19,400 base rent is NOK 1,400 over your comfortable target. Garage makes NOK 20,400 before electricity, uncertain heating/hot water and other extras. The all-in budget cannot yet be confirmed.',
+    'Electricity requires your own subscription. Clarify cold-water charges and basic-internet limits.',
+    'Bathroom has a washing-machine connection, not an explicitly included machine. Confirm supply and installation costs.',
+    'Storage descriptions conflict: one storage room is first mentioned, then two. Confirm the number, usable size and location.',
+    'Office routes to UiO and Sikt are unverified. The advertised eight-minute walk to the metro is not a door-to-door work journey.',
+    'Displayed lease: 1 December 2026–30 November 2029. Three-month notice and binding-period wording mention 31 August 2027 and a minimum term until 30 November 2027. Request the earliest possible end date and notice deadline in writing.',
+    'Confirm garage availability, charging tariffs and electricity billing. Photos and floor plan were not supplied: balcony size, light, sound insulation and usable layout have not been visually assessed.'
+  ],
+  costs:'Base rent NOK 19,400; optional garage NOK 1,000 gives NOK 20,400. Basic internet is included. Heating/hot-water inclusion conflicts with zero advances and annual settlement, so their real cost is unresolved; private electricity is extra. Security starts at three months, implying at least NOK 58,200; confirm the amount. Optional If insurance at 2.6% of base rent is NOK 504.40/month: NOK 19,904.40 without garage or NOK 20,904.40 with it, before other costs. Confirm the fee basis if parking is bundled. The deposit account and insurance are alternatives, not automatically combined.',
+  methodology:'Provisional 7.5/10: unfurnished status, reported B grade, matching start and amenities are positives. At exactly 45 m², higher rent and unclear utility billing, the listing needs clarification before ranking higher. Grade B does not resolve the billing contradiction or prove office commutes. It remains behind Løren’s 8.5/10 advertised package under the current evidence.'
 }];
