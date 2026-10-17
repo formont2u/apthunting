@@ -102,4 +102,31 @@ window.SAVED_LISTINGS = [{
   ],
   costs:'NOK 17,900/month; advertised deposit NOK 53,700. TV/broadband included; utility and parking costs remain unknown, so the all-in total is unconfirmed. Optional Qasa at 4.98% of base rent adds NOK 891.42/month: NOK 18,791.42 before other extras. The standard deposit and optional service must not automatically be combined. Budget separately for any accommodation needed on 1–8 December.',
   methodology:'Provisional 7.5/10 for base price, minimum space, amenities and coastal setting. Partial furnishing, the 9 December start, unverified utility/parking costs, office journeys and weaker social-life fit are reservations. No A–C bonus is awarded: the energy grade is unknown. Actual total cost and the certificate may change this assessment.'
+}, {
+  id:'478779324',title:'Sæter / Nordstrand · Nordstrandveien 44 A',address:'Nordstrandveien 44 A, 1163 Oslo',
+  url:'https://www.finn.no/realestate/lettings/ad.html?finnkode=478779324',
+  rent:17500,deposit:52500,area:48,bedrooms:1,score:7.5,furnishing:'unfurnished',energyGrade:'A',heatingLabel:'Dark green (reported in the ad)',
+  source:'User-provided listing text explicitly reports grade A and a dark-green heating label. The energy certificate is offered on request but has not been reviewed; photos and live availability not checked.',
+  lat:59.863,lng:10.801,
+  locationNote:'Approximate reference around Sæter, not a verified geocode of Nordstrandveien 44 A. Confirm the entrance and routes on the original listing.',
+  verdict:'Provisional 7.5/10: a strong energy-preference candidate with unfurnished space, a lift and local shops. Reported grade A puts it first in the default energy-preference order, not necessarily first by overall fit. Office routes, parking and lease restrictions need checking.',
+  strengths:[
+    'Reported energy grade A, inside your A–C preference. The separate heating label is reported as dark green. Request the certificate to verify both.',
+    '48 m² BRA-i advertised, one bedroom, unfurnished: your basic requirements are met.',
+    'NOK 17,500 total advertised rent includes water/sewer charges and a NOK 2,200 heating advance. Do not add that advance to the rent a second time.',
+    'Second floor with lift and balcony advertised. Integrated fridge/freezer, dishwasher, oven and hob are listed; a freestanding washing machine is also listed.',
+    'Direct access to Sæter Torg facilities and nearby groceries support your everyday-shopping preference. A quieter residential alternative to the inner city.'
+  ],
+  checks:[
+    'Starts 12 December 2026, eleven days after your ideal move. Check whether an earlier start or temporary accommodation would work.',
+    'Heating is an advance payment, not an unlimited fixed-price inclusion. The ad describes at least annual reconciliation, with any difference payable within 14 days; request past consumption and settlement amounts.',
+    'Electricity requires your own subscription. Internet/TV subscriptions are expressly excluded. The total monthly cost may exceed your NOK 18,000 comfortable target.',
+    'Parking is described as included in the rent summary, but the parking section says street parking under applicable rules. Do not assume a reserved space: request written clarification of the space, permit, price and availability.',
+    'Displayed lease: 12 December 2026–11 December 2029. Three-month notice and binding-period wording mention 30 September 2027 and a minimum term until 31 December 2027. Ask the agent to confirm the earliest possible end date and notice deadline in writing; the wording should not be simplified into a freely cancellable lease.',
+    'Freestanding appliances are supplied only while working; repair/replacement is stated as outside the lease. Ask specifically about washing-machine responsibility.',
+    'Office routes to UiO and Sikt are unverified. The ad’s tram/bus route numbers and estimated center journey should be checked against current schedules; center travel is not the full work commute.',
+    'A good energy grade does not establish sound insulation or guarantee a low bill. Photos were not supplied for visual assessment.'
+  ],
+  costs:'Advertised rent NOK 17,500 includes the NOK 2,200 heating advance plus water/sewer charges; heating is reconciled against actual use. Electricity and internet/TV are extra; parking terms conflict within the ad. Security starts at three months of rent, implying at least NOK 52,500, but confirm the required amount. The ad offers either a deposit account or optional If tenant insurance. At 2.6%, the insurance is NOK 455/month (within its NOK 300–700 bounds), making NOK 17,955 before electricity/internet and heating adjustments. Do not add both alternatives automatically. The insurer may seek reimbursement from the tenant after a covered landlord loss.',
+  methodology:'Provisional 7.5/10 overall: reported A grade, unfurnished status, local shopping and advertised base cost are positives; the later start, lease lock-in wording, unverified office routes and unclear parking remain material. Energy preference separately moves this listing ahead of unknown-grade listings in default order. That does not certify the grade, guarantee the all-in budget or override your hard cost/commute limits.'
 }];

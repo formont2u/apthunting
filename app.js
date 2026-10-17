@@ -192,8 +192,12 @@ function listingContent(listing,expanded=false){
   const facts=document.createElement('p');facts.textContent=`NOK ${listing.rent.toLocaleString('en-GB')}/month · ${listing.area} m² advertised · ${listing.bedrooms} bedroom${listing.bedrooms>1?'s':''} · ${listing.furnishing || 'unfurnished'}`;
   const verdict=document.createElement('p');verdict.textContent=listing.verdict;
   const location=document.createElement('p');location.className='location-warning';location.textContent=listing.locationNote;
-  const energy=document.createElement('p');energy.className='energy-status';energy.textContent=listing.energyGrade?'Energy grade: '+listing.energyGrade+(preferredEnergy(listing)?' · preferred A–C':' · outside your A–C preference'):'Energy grade: unknown · certificate needed';
-  root.append(title,score,facts,energy,verdict,location);
+  const energy=document.createElement('p');energy.className='energy-status';energy.textContent=listing.energyGrade?'Reported energy grade: '+listing.energyGrade+(preferredEnergy(listing)?' · preferred A–C':' · outside your A–C preference'):'Energy grade: unknown · certificate needed';
+  const scale=document.createElement('div');scale.className='energy-scale';scale.setAttribute('role','img');scale.setAttribute('aria-label','Energy scale A (most efficient) to G (least efficient). '+(listing.energyGrade?'Reported grade '+listing.energyGrade+'. Certificate not reviewed.':'Grade unknown.'));
+  for(const grade of 'ABCDEFG'){const cell=document.createElement('span');cell.textContent=grade;cell.className='energy-cell grade-'+grade;cell.dataset.grade=grade;if(grade===listing.energyGrade){cell.classList.add('selected');cell.textContent=grade+' ✓';}scale.append(cell);}
+  root.append(title,score,facts,energy,scale);
+  if(listing.heatingLabel){const heating=document.createElement('p');heating.className='small';heating.textContent='Separate heating label: '+listing.heatingLabel+'. This color is not the A–G energy grade.';root.append(heating);}
+  root.append(verdict,location);
   const details=document.createElement('details');details.open=expanded;
   const summary=document.createElement('summary');summary.textContent='Assessment, costs and checks';details.append(summary);
   for(const [heading,items] of [['Strengths',listing.strengths],['To confirm',listing.checks]]){
@@ -208,11 +212,16 @@ function preferredEnergy(listing){return profile.preferredEnergyGrades.includes(
 if(map)listingLayer=L.layerGroup().addTo(map);
 function renderListings(){
   const mode=$('energy-filter').value;
-  const visible=savedListings.filter(item=>mode!=='only'||preferredEnergy(item)).sort((a,b)=>
+  const visible=savedListings.filter(item=>{
+    if(mode==='only')return preferredEnergy(item);
+    if(mode==='unknown')return !item.energyGrade;
+    if(/^[A-G]$/.test(mode))return item.energyGrade===mode;
+    return true;
+  }).sort((a,b)=>
     (mode==='prefer'?Number(preferredEnergy(b))-Number(preferredEnergy(a)):0)||b.score-a.score);
   $('saved-listings').replaceChildren();listingLayer?.clearLayers();listingMarkers.clear();
   $('listing-count').textContent=visible.length+' of '+savedListings.length+' listings shown.';
-  if(!visible.length){const empty=document.createElement('p');empty.textContent='No confirmed A–C listings available. Missing grades are not assumed to qualify; request the certificates or show all listings.';$('saved-listings').append(empty);}
+  if(!visible.length){const empty=document.createElement('p');empty.textContent='No listings match this energy filter. Missing grades are not assumed to qualify; request certificates or show all listings.';$('saved-listings').append(empty);}
   visible.forEach(listing=>{
     if(map){
       const icon=L.divIcon({className:'listing-icon',html:'<svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m2 11 10-8 10 8M5 9v12h14V9M10 21v-7h4v7"/></svg><span>≈</span>',iconSize:[42,42],iconAnchor:[21,21],popupAnchor:[0,-24]});
